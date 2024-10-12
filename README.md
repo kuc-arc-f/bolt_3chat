@@ -6,7 +6,7 @@
  
  date    : 2024/10/11
 
- update :
+ update : 2024/10/12
 
 ***
 
@@ -26,6 +26,13 @@ https://bolt.new/
 yarn build
 yarn dev
 ```
+
+
+***
+### example
+
+* chat1 : new bolt.new generate
+* chat2 : reply add, bolt.new
 
 *** 
 # License
