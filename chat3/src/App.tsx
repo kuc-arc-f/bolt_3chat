@@ -1,5 +1,5 @@
 import { useState , useEffect } from 'react';
-import { MessageCircle, Send, Reply } from 'lucide-react';
+import { MessageCircle, Send, Reply, Trash} from 'lucide-react';
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { ScrollArea } from "@/components/ui/scroll-area"
@@ -69,6 +69,17 @@ function App() {
   const handleReply = (messageId: number) => {
     setReplyingTo(messageId);
   };
+  //
+  const handleDelete = async (messageId: string) => {
+    try{    
+      const resulte = await CrudIndex.delete(messageId);
+      const d = await CrudIndex.getList();
+      setMessages(d);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
 
   const renderMessage = (message: Message) => (
     <Card key={message.id} className={`mb-4 ${message.sender === 'user' ? 'ml-auto' : 'mr-auto'} max-w-[80%]`}>
@@ -83,6 +94,15 @@ function App() {
           <Reply className="h-4 w-4 mr-1" /> 返信
         </Button>
       ) : null }
+      <Button variant="ghost" size="sm" className="mt-1" onClick={() => {
+        console.log("id=", message.id);
+        if (window.confirm("Delete OK?")) {
+          handleDelete(message.id);
+        }
+      }}>
+        <Trash className="h-4 w-4 mr-1" /> Delete
+      </Button>
+
     </Card>
   );
 

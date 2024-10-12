@@ -11,7 +11,7 @@
     "build:server": "bun build --target=node --minify src/index.ts --outfile dist/index.js",
     "build:client": "bunx esbuild  --bundle --format=esm --minify  ./src/entry-client.tsx --outdir=public/static --tsconfig=tsconfig.json",
     "build:css": "bunx tailwindcss -i ./src/index.css -o ./public/static/style.css",
-    "clean": "rimraf dist",
+    "clean": "rimraf dist && rimraf public/static",
     "lint": "eslint .",
     "start": "bun run dist/index.js",
     "preview": "vite preview"
