@@ -22,6 +22,10 @@ chat Data, Server Side Save
 bun run build
 bun run dev
 ```
+***
+### blog
+
+https://knakatech-blog.pages.dev/posts/172
 
 ***
 
